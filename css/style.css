@@ -1,0 +1,16 @@
+header {
+	height: 100px;
+	background-color: black;
+}
+div {
+  height: 200px;
+  width: 200px;
+  background-color: black;
+  margin: 25px auto;
+  display: inline-block;
+  padding: 5px;
+  border: 2px solid red;
+}
+.active {
+	background-color: gray;
+}
