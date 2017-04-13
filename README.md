@@ -26,7 +26,7 @@ Psuedo-code
 3. Create array of cards and the values
 4. Add click event to each card
 5. Once a card is clicked, create a function to flip it over
-6. Get value of the cards selected
+6. Assign data ids to each card and get value of the cards selected
 7. Check for a card match between the two cards selected
 8. If cards match, remove/hide from game board
 9. Otherwise, flip the cards back over to their backside
