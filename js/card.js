@@ -8,7 +8,7 @@ let createCard;
 // let board = document.querySelectorAll('.cards');
 let board;
 let card;
-let isMatch = document.querySelectorAll('div .active');
+// let isMatch = document.querySelectorAll('.active');
 
 //Add a difficulty setting to the game
 // let difficulty = {
@@ -90,25 +90,34 @@ function flipCard(e) {
 function checkForMatch() {	
 //For testing, matches are 1-2, 3-4, 5-6, 7-8
 	if(cardsInPlay[0] === cardsInPlay[1]) {
-		console.log('match!');
-		for(let i =0; i <cardsInPlay.length; i++){
-			let changeClass = document.querySelectorAll('.active');
-					changeClass.setAttribute('class', 'isMatch');
-					console.log(changeClass)
-			console.log(cardsInPlay.length);
-			// cardsInPlay.setAttribute('class','.isMatch');
+		let isMatch = document.querySelectorAll('.active');
+				for(let i =0; i < isMatch.length; i++){
+					console.log(isMatch[0]);
+					isMatch[i].style.backgroundColor = 'red';
 		}
+		cardsInPlay = [];
+		console.log('match!');
+	}
+		// cardsInPlay = [];
+		// for(let i =0; i < cardsInPlay.length; i++){
+		// 		cardsInPlay[i].style.opacity = .8; 
+			// let changeClass = document.querySelectorAll('.active');
+			// 		changeClass.setAttribute('class', 'isMatch');
+
+			// cardsInPlay.setAttribute('class','.isMatch');
+		
+		// let changeClass = document.querySelectorAll('.active');
 
 		// isMatch.style.backgroundColor = "red";
 			// isMatch.className = 'isMatch';
-			cardsInPlay = [];
+			
 		// console.log(isMatch);
 		// console.log(cardsInPlay);
 		// cardUno = this.cardsInPlay;
 		// 	console.log(cardUno);
 		// this.cardsInPlay.style.backgroundColor = 'black';
 		// cardsInPlay[1].style.backgroundColor = 'black';
-	} else {
+	 else {
 		cardsInPlay = [];
 	}
 	
