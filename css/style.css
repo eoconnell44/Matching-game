@@ -27,12 +27,16 @@ button {
 .cards {
 	position: relative;
 	background-color: black;
+	transition: 2s ease;
 }
 .active {
 	background-color: gray;
 }
 .isMatch {
-	background-color: red;
+  opacity: 0.1;
+  background: lightgray;
+  border: 5px solid white;
+  transition: 3s ease;
 }
 .difficulty {
     height: 50px;
@@ -58,5 +62,17 @@ button {
 #clock {
 		background-color: white;
 	border: none;
+}
+.moves {
+  background-color: white;
+  font-size: 35px;
+  text-align: center;
+  height: 75px;
+  width: 100px;
+}
+.moveCount {
+    background-color: white;
+    border: none;
+    margin: 1px;
 }
 

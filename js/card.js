@@ -3,12 +3,15 @@ console.log('card.js is connected')
 let cardsArray = [];
 //Leave empty array to push selected cards into
 let cardsInPlay = [];
-let cards = ['vv', 'vv',3,3,5,5,7,7];
+let cards = [1,1,3,3,5,5,7,7];
 let createCard;
 // let board = document.querySelectorAll('.cards');
 let board;
 let card;
-// let isMatch = document.querySelectorAll('.active');
+//Needed for the rando function
+let j = 0;
+let temp = null;
+let moves = 0;
 
 //Add a difficulty setting to the game
 // let difficulty = {
@@ -22,19 +25,11 @@ function startGame() {
 		btn.addEventListener('click', createBoard);
 
 }
-/*// parg is an object reference to a <p> element
-
-if (parg.hasChildNodes()) {
-  // So, first we check if the object is not empty, if the object has child nodes
-  var children = parg.childNodes;
-
-  for (var i = 0; i < children.length; i++) {
-    // do something with each child as children[i]
-    // NOTE: List is live, Adding or removing children will change the list
-  }
-}*/
+//Thank you Frank Mitchell
 
 function createBoard() {
+	//Prevents creating mulitple game boards
+	document.querySelector('button').removeEventListener('click', createBoard);
 	for(let i = 0; i < cards.length; i++){
 		let createCard = document.createElement('div');
 			createCard.setAttribute('class', 'cards');
@@ -43,9 +38,19 @@ function createBoard() {
 		document.querySelector('.gameBoard').appendChild(createCard);
 	}
 	countDown();
+	randoArray();
 removeEL();
 
 };
+function randoArray() {
+	for (let i = cards.length - 1; i > 0; i -= 1) {
+		j = Math.floor(Math.random() * (i + 1));
+		temp = cards[i];
+			cards[i] = cards[j];
+			cards[j] = temp;
+	}
+}	
+
 //For later use of removing event listener
 //Getting a TypeError: board.removeEventListener is not a function...Need to do some research into this, not sure why..
 function removeEL(){
@@ -63,21 +68,15 @@ function removeEL(){
 function flipCard(e) {
 	board = document.querySelectorAll('.cards');	
 	//Need to grab the cards specific id
-	// let card = this.getAttribute('data-id');
 	let card = e.target;
-	// console.log(firstCard);
+
 	let cardIdtag = e.target.getAttribute('id');
 	console.log(card);
 	// this.innerHTML = '<img src="assets/vvaughn.jpg">';
 	//Changing BGC without toggleClass....possibly do an add/remove w/ multy lines of code
-	// this.style.backgroundColor = 'gray';
 	this.className = 'active';
 	cardsInPlay.push(cards[cardIdtag]);
-
 	console.log(cardsInPlay);
-
-	// firstCard = this.cardsInPlay;
-	// console.log(firstCard);
 
 	if(cardsInPlay.length === 2) {
 		checkForMatch();
@@ -86,42 +85,45 @@ function flipCard(e) {
 	} 
 	return			
 }
+//If card isn't a match, it's not properly displaying the 2nd card picked. Possilby need function --
+function flipBack() {
+	for(let i =0; i < cardsInPlay.length; i++){
+		cardsInPlay[i].className = 'cards';
+	}
+}
 
 function checkForMatch() {	
 //For testing, matches are 1-2, 3-4, 5-6, 7-8
 	if(cardsInPlay[0] === cardsInPlay[1]) {
-		let isMatch = document.querySelectorAll('.active');
-				for(let i =0; i < isMatch.length; i++){
-					console.log(isMatch[0]);
-					isMatch[i].style.backgroundColor = 'red';
+		let isActive = document.querySelectorAll('.active');
+				for(let i =0; i < isActive.length; i++){
+					console.log(isActive[0]);
+					isActive[i].className = 'isMatch';
+					isActive[i].removeEventListener('click', flipCard);
+					cardsInPlay = [];
+					playerWin();
+		}		
+	}		
+		if(cardsInPlay[0] !== cardsInPlay[1]){
+			let isActive = document.querySelectorAll('.active');
+				for(let i =0; i < isActive.length; i++){
+					isActive[i].className = 'cards';	
 		}
-		cardsInPlay = [];
-		console.log('match!');
-	}
-		// cardsInPlay = [];
-		// for(let i =0; i < cardsInPlay.length; i++){
-		// 		cardsInPlay[i].style.opacity = .8; 
-			// let changeClass = document.querySelectorAll('.active');
-			// 		changeClass.setAttribute('class', 'isMatch');
-
-			// cardsInPlay.setAttribute('class','.isMatch');
-		
-		// let changeClass = document.querySelectorAll('.active');
-
-		// isMatch.style.backgroundColor = "red";
-			// isMatch.className = 'isMatch';
-			
-		// console.log(isMatch);
-		// console.log(cardsInPlay);
-		// cardUno = this.cardsInPlay;
-		// 	console.log(cardUno);
-		// this.cardsInPlay.style.backgroundColor = 'black';
-		// cardsInPlay[1].style.backgroundColor = 'black';
-	 else {
+		flipBack();
 		cardsInPlay = [];
 	}
-	
 }
+
+function playerWin(){
+	console.log('You win!');
+	let clock = document.querySelector('.timer');
+	let timeValue = document.querySelector('.timer').innerHTML;
+			clock.appendChild(timeValue);
+			timeValue.innerHTML = timeValue;
+			console.log(clock)
+			console.log(timeValue)
+}
+
 //Need to flip cards back into place if no match
 function resetGame() {
 	//clears cards showing
@@ -145,6 +147,11 @@ timeCounter.innerHTML = startTime;
 		}
 		}, 1000);
 	}
+
+// function myFunction() {
+//     points.sort(function(a, b){return 0.5 - Math.random()});
+//     document.getElementById("demo").innerHTML = points;
+// }
 
 function difficulty() {
 
