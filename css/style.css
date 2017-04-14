@@ -1,3 +1,6 @@
+* {
+	font-family: 'Chewy', cursive;
+}
 header {
 	height: 100px;
 	background-color: black;
@@ -10,12 +13,25 @@ div {
     display: inline-block;
     padding: 5px;
     border: 5px solid red;
+    cursor: pointer;
 }
 button {
-	margin: 2% 25%;
-	height: 40px;
-	width: 170px;
-	font-size: 18px;
+  margin: 1% 6%;
+  height: 50px;
+  width: 170px;
+  font-size: 24px;
+  display: inline-block;
+  border-radius: 5%;
+  cursor: pointer;
+}
+.difficulty {
+/*	display: none;*/
+}
+img {
+	height: 200px;
+	width: 200px;
+/*	z-index: -1;*/
+/*	display: none;*/
 }
 .gameBoard {
 	position: absolute;
@@ -28,9 +44,11 @@ button {
 	position: relative;
 	background-color: black;
 	transition: 2s ease;
+	z-index: 1;
 }
 .active {
 	background-color: gray;
+	z-index: -1;
 }
 .isMatch {
   opacity: 0.1;
@@ -38,7 +56,7 @@ button {
   border: 5px solid white;
   transition: 3s ease;
 }
-.difficulty {
+.diffColor {
     height: 50px;
     width: 90%;
     background-color: white;
@@ -75,4 +93,24 @@ button {
     border: none;
     margin: 1px;
 }
-
+.matchCount {
+	background-color: white;
+	font-size: 35px;
+	text-align: center;
+	height: 75px;
+	width: 100px;
+}
+.matches {
+	background-color: white;
+	border: none;
+	margin: 1px;
+}
+#easy {
+	background-color: green;
+}
+#medium {
+	background-color: orange;
+}
+#hard {
+	background-color: red;
+}

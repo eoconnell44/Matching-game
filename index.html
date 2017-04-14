@@ -2,21 +2,27 @@
 <html lang="en">
 <head>
 <link rel="stylesheet" href="css/style.css" type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Chewy" rel="stylesheet">
 	<meta charset="UTF-8">
 	<title>Document</title>
 </head>
 <body>
 	<header>
-		<button>Start New Game</button>
+		<button class='newGame'>Start New Game</button>
+		<button id='easy' class="difficulty">Easy</button>
+		<button id='medium' class="difficulty">Medium</button>
+		<button id='hard' class="difficulty">Hard</button>
 
 	</header>
 	<main>
-	<div class="difficulty"></div>
+	<div class="diffColor"></div>
 	<div id='clock'>
 		<h2 class='shotClock'>Shot Clock</h2>
 	<div class="timer"></div>
 		<h2 class="moveCount">Moves</h2>
 	<div class="moves"></div>
+		<h2 class="matches">Matches</h2>
+	<div class="matchCount"></div>
 	</div>
 
 		<div class="gameBoard">
