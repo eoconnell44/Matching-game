@@ -1,9 +1,10 @@
 * {
-	font-family: 'Chewy', cursive;
+  font-family: 'Chewy', cursive;
+  font-size: 28px;
 }
 header {
-	height: 100px;
-	background-color: black;
+  height: 100px;
+  background-color: black;
 }
 div {
     height: 200px;
@@ -19,41 +20,51 @@ button {
   margin: 1% 6%;
   height: 50px;
   width: 170px;
-  font-size: 24px;
+  font-size: 34px;
   display: inline-block;
   border-radius: 5%;
   cursor: pointer;
 }
+.newGame {
+  width: 240px;
+  height: 65px;
+}
 .difficulty {
-/*	display: none;*/
+/*  display: none;*/
 }
 img {
-	height: 200px;
-	width: 200px;
-/*	z-index: -1;*/
-/*	display: none;*/
+  height: 300px;
+  width: 300px;
+/*  z-index: -1;*/
+/*  display: none;*/
+}
+.cardImgs {
+    margin: 14px;
+    padding: 0px;
+    border: 4px solid black;
+    background-color: black;
 }
 .gameBoard {
-	position: absolute;
-	height: 800px;
-	width: 85%;
-	background-color: white;
-	left: 145px;
+  position: absolute;
+  height: 1250px;
+  width: 85%;
+  background-color: white;
+  left: 145px;
+  border: none;
 }
 .cards {
-	position: relative;
-	background-color: black;
-	transition: 2s ease;
-	z-index: 1;
+  position: relative;
+  background-color: black;
+  transition: 2s ease;
+  z-index: 1;
 }
-.active {
-	background-color: gray;
-	z-index: -1;
+.active .flipped {
+
 }
 .isMatch {
   opacity: 0.1;
-  background: lightgray;
-  border: 5px solid white;
+/*  background: lightgray;*/
+/*  border: 5px solid white;*/
   transition: 3s ease;
 }
 .diffColor {
@@ -74,12 +85,12 @@ img {
   width: 100px;
 }
 .shotClock {
-	background-color: white;
-	border: none;
+  background-color: white;
+  border: none;
 }
 #clock {
-		background-color: white;
-	border: none;
+    background-color: white;
+  border: none;
 }
 .moves {
   background-color: white;
@@ -94,23 +105,23 @@ img {
     margin: 1px;
 }
 .matchCount {
-	background-color: white;
-	font-size: 35px;
-	text-align: center;
-	height: 75px;
-	width: 100px;
+  background-color: white;
+  font-size: 35px;
+  text-align: center;
+  height: 75px;
+  width: 100px;
 }
 .matches {
-	background-color: white;
-	border: none;
-	margin: 1px;
+  background-color: white;
+  border: none;
+  margin: 1px;
 }
 #easy {
-	background-color: green;
+  background-color: green;
 }
 #medium {
-	background-color: orange;
+  background-color: orange;
 }
 #hard {
-	background-color: red;
+  background-color: red;
 }
