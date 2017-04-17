@@ -18,6 +18,12 @@ let macgruber = new Card('macgruber','./assets/macgruber.jpg', 'macgruber');
 let macgrubmov = new Card('macgruberv2','./assets/macgruberv2.jpg', 'macgruber');
 let hansolo = new Card('hansolo','./assets/hansolo.jpg', 'starwars');
 let starwars = new Card('starwars','./assets/starwars.jpg', 'starwars');
+let denzel = new Card('denzel', './assets/denzel.jpg', 'remtitans');
+let remtitans = new Card('remtitans', './assets/remtitans.jpg', 'remtitans');
+// let marty = new Card('marty', './assets/martymcfly.jpg', 'backtofuture');
+// let btfuture = new Card('backtofuture', './assets/btfuture.jpg', 'backtofuture');
+let btfuture = new Card('btfuture', "assets/btfuture.jpg", 'backtofuture');
+let martymcfly = new Card('martymcfly', 'assets/martymcfly.jpg', 'backtofuture');
 //objects
 let vince = new Card ('vvaughn', './assets/vvaughn.jpg', 'wedcrash');
 let wcrashers = new Card ('wedcrashers', './assets/wedcrashers.jpg', 'wedcrash');
@@ -42,6 +48,7 @@ let moveCount = document.querySelector('.moves');
 let matches = 0;
 let matchCount = document.querySelector('.matchCount');
 let diffBtns = $('.difficulty').hide();
+let resetBtn = $('.reset').hide();
 let difficulty = {
 	easy: [1,1,3,3,5,5,7,7],
 	medium: [1,1,3,3,5,5,7,7,9,9,11,11,13,13,15,15],
@@ -59,7 +66,7 @@ function startGame() {
 }
 
 function difficultyLevel(e) {
-	let easy = document.querySelector('#easy').addEventListener('click', createBoard);
+	// let easy = document.querySelector('#easy').addEventListener('click', createBoard);
 			$('#easy').on('click', green);
 	// let medium = document.querySelector('#medium').addEventListener('click', orange);
 			$('#medium').on('click', orange);
@@ -71,40 +78,53 @@ function difficultyLevel(e) {
 
 }
 function green(){
-	console.log('green')
 	$('.diffColor').css('background-color', 'green');
 	// $('div').css('border', 'solid green');
+	cards.push(lotr);
+	cards.push(gandalf);
+	createBoard();
 }
 function orange() {
 	$('.diffColor').css('background-color', 'orange');
 	// $('.diffColor').css('background-color', 'orange');
-		cards.push(lotr);
-		cards.push(gandalf);
-		cards.push(neo);
-		cards.push(matrix);
-		console.log(cards)
-		createBoard();
+	cards.push(lotr);
+	cards.push(gandalf);
+	cards.push(neo);
+	cards.push(matrix);
+	cards.push(starwars);
+	cards.push(hansolo);
+	cards.push(btfuture);
+	cards.push(martymcfly);
+	console.log(cards)
+	createBoard();
 }
 function red() {
 	$('.diffColor').css('background-color', 'red');
 	// $('.diffColor').css('background-color', 'red');
-			cards.push(lotr);
-		cards.push(gandalf);
-		cards.push(neo);
-		cards.push(matrix);
+	cards.push(lotr);
+	cards.push(gandalf);
+	cards.push(neo);
+	cards.push(matrix);
 	cards.push(starwars);
 	cards.push(hansolo);
 	cards.push(macgruber);
 	cards.push(macgrubmov);
+	cards.push(denzel);
+	cards.push(remtitans);
+	cards.push(btfuture);
+	cards.push(martymcfly);
+
 	console.log(cards)
 	createBoard();
-
 }
 //Do we need to create 3 different board functions??
 function createBoard() {
 	diffBtns.hide();
+	$('.newGame').hide();
+	resetBtn.show();
+	$(resetBtn).on('click', resetGame)
 	randoArray();
-
+	// countDown();
 	//Prevents creating mulitple game boards
 	document.querySelector('#easy').removeEventListener('click', createBoard);
 	document.querySelector('.newGame').removeEventListener('click', createBoard);
@@ -209,6 +229,7 @@ let startTime = 60;
 let timeCounter = document.querySelector('.timer');
 //Display initial number 
 timeCounter.innerHTML = startTime;
+let totalmoves = moves.innerHTML
 
 function countDown() {
 	//Needed to have ability to clear later on
@@ -216,11 +237,17 @@ function countDown() {
 timeCounter.innerHTML = startTime;
 		startTime -= 1;
 
-		if(startTime < 1){
+		if(startTime < 0){
 			clearInterval(time);
+			alert('You lost!')
 		}
-			else if(matches === cards.length / 2)
+			else if(matches === cards.length / 2) {
+				alert('you win!!')
+				
+			// alert('You finished in only ' + totalmoves)
 			clearInterval(time);
+			}
+
 		}, 1000);
 }
 
