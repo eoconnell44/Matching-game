@@ -55,6 +55,7 @@ let difficulty = {
 	hard: [1,1,3,3,5,5,7,7,9,9,11,11,13,13,15,15,17,17,19,19,20,20,21,21]
 };
 const backSide = 'assets/qmark.jpg';
+const loserAlerts = ['Nice try!', 'So close!!', 'Better luck next time!', 'Sorry, try again', 'HAH, You lost!!'];
 
 function startGame() {
 //Limit only 1 board created at a time
@@ -73,7 +74,7 @@ function difficultyLevel(e) {
 	// let hard = document.querySelector('#hard').addEventListener('click', createBoard);
 		$('#hard').on('click', red);
 		document.querySelector('.newGame').removeEventListener('click', createBoard);
-
+		$('.instructions').html('');
 
 
 }
@@ -93,8 +94,8 @@ function orange() {
 	cards.push(matrix);
 	cards.push(starwars);
 	cards.push(hansolo);
-	cards.push(btfuture);
-	cards.push(martymcfly);
+	// cards.push(btfuture);
+	// cards.push(martymcfly);
 	console.log(cards)
 	createBoard();
 }
@@ -239,10 +240,16 @@ timeCounter.innerHTML = startTime;
 
 		if(startTime < 0){
 			clearInterval(time);
+			// for(let i= loserAlerts.length - 1; i > 0; i -= 1){
+			// 	j = Math.floor(Math.random() * (i + 1));
+			// 	loser = loserAlerts[i];
+			// 	loserAlerts[i] = loserAlerts[j];
+			// 	loserAlerts[j] = loser;
+			// 	alert(loser[0]);
 			alert('You lost!')
 		}
 			else if(matches === cards.length / 2) {
-				alert('you win!!')
+				alert('You won in only ' + moves + ' moves and ' + (startTime + 1) + ' seconds left!!')
 				
 			// alert('You finished in only ' + totalmoves)
 			clearInterval(time);
@@ -252,8 +259,6 @@ timeCounter.innerHTML = startTime;
 }
 
 startGame();
-
-
 
 
 }); //For jQuery
