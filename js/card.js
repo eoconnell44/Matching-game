@@ -75,9 +75,8 @@ function difficultyLevel(e) {
 		$('#hard').on('click', red);
 		document.querySelector('.newGame').removeEventListener('click', createBoard);
 		$('.instructions').html('');
-
-
 }
+//The savior to my difficulty/create board challenge...Also could be used in future for making catergories??
 function green(){
 	$('.diffColor').css('background-color', 'green');
 	// $('div').css('border', 'solid green');
@@ -118,8 +117,9 @@ function red() {
 	console.log(cards)
 	createBoard();
 }
-//Do we need to create 3 different board functions??
+//Do we need to create 3 different board functions?? -- Nope!! Solved with a few pushes...but maybe there is an easier way...
 function createBoard() {
+	//Keep the header options clean
 	diffBtns.hide();
 	$('.newGame').hide();
 	resetBtn.show();
@@ -133,6 +133,7 @@ function createBoard() {
 	for(let i = 0; i < cards.length; i++){
 		let cardImg = document.createElement('img');
 		cardImg.setAttribute('class', 'cardImgs');
+		//Use of the id will be called upon when putting together image path
 		cardImg.setAttribute('id', cards[i].title);
 		cardImg.setAttribute('src', "assets/qmark.jpg");
 		//Data ID is needed to check for match and comparisons later on
@@ -155,7 +156,7 @@ function randoArray() {
 }		
 
 function flipCard(e) {
-	//Need to grab the cards specific id
+	//Need to grab the cards specific id, which will use in locating the image source
 let cId = this.getAttribute('id');
 //YESSSSSSSSSSSSS
 let source = 'assets/' + cId + '.jpg';
@@ -168,6 +169,7 @@ console.log(this);
 	moveCount.innerHTML = moves;
 	$(this).toggleClass('active');
 	if(cardsInPlay.length === 2) { 
+		//Correcting the move count problem
 		if(cardsInPlay[0] === cardsInPlay[1]){
 		$(cardsInPlay[0]).on('click', flipCard);
 		matches--;
@@ -180,7 +182,7 @@ console.log(this);
 	} 
 	return			
 }
-//If card isn't a match, it's not properly displaying the 2nd card picked. Possilby need function --
+//Switch back to the source of the qmark image
 function flipBack() {
 	for(let i =0; i< cardsInPlay.length; i++){
 	$(cardsInPlay[i]).attr('src', backSide)
@@ -240,6 +242,7 @@ timeCounter.innerHTML = startTime;
 
 		if(startTime < 0){
 			clearInterval(time);
+			//Would like to randomly select a lost alert, for now will stick with just one
 			// for(let i= loserAlerts.length - 1; i > 0; i -= 1){
 			// 	j = Math.floor(Math.random() * (i + 1));
 			// 	loser = loserAlerts[i];
