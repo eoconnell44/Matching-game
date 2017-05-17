@@ -167,7 +167,7 @@ console.log(this);
 	$(this).attr('src', source);
 	moves++;
 	moveCount.innerHTML = moves;
-	$(this).toggleClass('active');
+	$(this).toggleClass('perspectiveLeft');
 	if(cardsInPlay.length === 2) { 
 		//Correcting the move count problem
 		if(cardsInPlay[0] === cardsInPlay[1]){
