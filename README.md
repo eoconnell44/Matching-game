@@ -1,9 +1,11 @@
 # Matching-game
 
-Object of the Game
+Click the [Here](https://eoconnell44.github.io/Matching-game/) to play the game
+
+# Object of the Game
 The object of the game is to collect the all matching pairs.
 
-The Rules
+# The Rules
 On each turn, the player will first turn one card over, then a second. If the two cards match, the player scores one point, the two cards are removed from the game. If they do not match, the cards are turned back over.
 
 The game continues in this fashion until all the cards are played.
@@ -19,7 +21,14 @@ The game continues in this fashion until all the cards are played.
 Winning the Game
 Once all the cards have been played the player will be announced the winner.
 
-Psuedo-code
+# User stories
+
+* user press start to begin game build
+* user chooses the difficulty level to play, Easy (10 cards), Medium (14 cards), Hard (20 cards)
+* player flips cards trying to match the movie character with their respective movie
+* player can reset game board at any time
+
+# Psuedo-code
 
 1. Create game board
 2. Create a button to start game and allow cards on board to be selected
@@ -34,3 +43,31 @@ Psuedo-code
 11. Alert player they have won
 12. Add a timer (1 min) for game to be completed
 13. Keep a tally of score and wins within the game  
+
+# Technologies used
+
+* Javascript
+* jQuery
+* HTML
+* CSS
+
+
+# Sample of Code
+```
+class Card {
+		constructor(title, src, ref) {
+			this.title = title;
+			this.src = src;
+			this.ref = ref;
+		}
+}
+
+function startGame() {
+//Limit only 1 board created at a time
+	let btn = document.querySelector('.newGame');
+		btn.addEventListener('click', difficultyLevel);
+		$('.newGame').on('click', function(){
+			$('.difficulty').show();
+		})
+}
+```
